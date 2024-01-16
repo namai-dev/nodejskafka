@@ -1,4 +1,7 @@
 const my_mailer = require("nodemailer");
+const fs = require("fs");
+
+const reg_template = fs.readFileSync("reg_temp.html", "utf-8");
 
 const transpoter = my_mailer.createTransport({
   service: "gmail",
@@ -15,7 +18,7 @@ const send_email = (rec_email) => {
     from: "namaiharmony4@gmail.com",
     to: [rec_email],
     subject: "Comrade Coin",
-    html: "<h1>Welcome to comrade coin.. Family is good</h1>",
+    html: reg_template,
   };
 
   transpoter
